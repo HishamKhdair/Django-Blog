@@ -15,9 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from users import views as users_views
+from blog import views as blog_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('blog.urls')) # if you want to keep the application on the root directory
-    # path('blog/', include('blog.urls')) # if you want to navigate to it as an app
+    path('register/', users_views.register, name='register'),
+    # path('', include('blog.urls'))
+    path('', blog_views.home, name='home'),
+    path('about/', blog_views.about)
+
+
 ]
